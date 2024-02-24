@@ -2,25 +2,21 @@ const messagesList = document.getElementById('messages');
 const form = document.getElementById('message-form');
 const messageInput = document.getElementById('message-input');
 
-// Prompt the user for their chat name
 const userName = prompt('Enter your chat name:', 'Guest');
 
-// update this to use your server's IP address
 let host = location.origin.replace(/^http/, 'ws')
 const socket = new WebSocket(host);
 
-// Function to handle the display of messages
 function handleMessage(data) {
   const messageData = JSON.parse(data);
   const messageItem = document.createElement('li');
 
-  // Differentiating between messages sent by the user and others
   if (messageData.sender === userName) {
     messageItem.textContent = `Me: ${messageData.text}`;
-    messageItem.className = 'my-message'; // Apply specific class for styling
+    messageItem.className = 'my-message';
   } else {
     messageItem.textContent = `${messageData.sender}: ${messageData.text}`;
-    messageItem.className = 'other-message'; // Different class for other users' messages
+    messageItem.className = 'other-message'; 
   }
 
   messagesList.appendChild(messageItem);
@@ -57,10 +53,10 @@ form.addEventListener('submit', function (e) {
     // Append the message to the chat window immediately for the sender
     const messageItem = document.createElement('li');
     messageItem.textContent = `Me: ${messageInput.value}`;
-    messageItem.className = 'my-message'; // Apply specific class for styling
+    messageItem.className = 'my-message';
     messagesList.appendChild(messageItem);
 
-    socket.send(JSON.stringify(messageData)); // Send the message as a JSON string
+    socket.send(JSON.stringify(messageData)); 
     messageInput.value = ''; // Clear the input field
   }
 });
