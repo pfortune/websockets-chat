@@ -5,7 +5,9 @@ const messageInput = document.getElementById('message-input');
 // Prompt the user for their chat name
 const userName = prompt('Enter your chat name:', 'Guest');
 
-const socket = new WebSocket('ws://localhost:3000');
+// update this to use your server's IP address
+let host = location.origin.replace(/^http/, 'ws')
+const socket = new WebSocket(host);
 
 // Function to handle the display of messages
 function handleMessage(data) {
