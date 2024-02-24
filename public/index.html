@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat App</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .my-message {
+        color: blue;
+      }
+
+      .other-message {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <!-- Messages will be displayed here -->
+    <form id="message-form">
+      <input
+        id="message-input"
+        autocomplete="off"
+        placeholder="Type a message..."
+      />
+      <button>Send</button>
+    </form>
+
+    <script src="chat.js"></script>
+    <!-- Link to your external JS file if you're using one -->
+  </body>
+</html>
